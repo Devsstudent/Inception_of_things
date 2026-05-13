@@ -1,4 +1,0 @@
-Warning: Permanently added '192.168.121.103' (ED25519) to the list of known hosts.
-bind [::]:6443: Address already in use
-channel_setup_fwd_listener_tcpip: cannot listen to port: 6443
-Could not request local forwarding.
