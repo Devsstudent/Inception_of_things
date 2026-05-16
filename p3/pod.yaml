@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: wilplayground
+  namespace: dev
+spec:
+  containers:
+   - name: containerv1
+     image: wil42/playground:v1
+
