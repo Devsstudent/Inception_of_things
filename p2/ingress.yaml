@@ -11,7 +11,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app1
+            name: app1-service
             port:
               number: 80
   - host: app2.com
@@ -21,7 +21,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app2
+            name: app2-service
             port:
               number: 80
   - host: app3.com
@@ -31,7 +31,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app3
+            name: app3-service
             port:
               number: 80
   - http:
@@ -40,6 +40,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: app3
+            name: app3-service
             port:
               number: 80
