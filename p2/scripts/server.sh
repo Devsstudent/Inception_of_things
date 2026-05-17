@@ -12,10 +12,10 @@ sudo cp -R /vagrant/app* /home/vagrant
 sudo cp /etc/rancher/k3s/k3s.yaml /home/vagrant/.kube/config
 sudo chown -R vagrant:vagrant /home/vagrant/.kube/config
 
-kubectl create -f /vagrant/app1/app1.yaml
-kubectl create -f /vagrant/app2/app2.yaml
-kubectl create -f /vagrant/app3/app3.yaml
-kubectl create -f /vagrant/ingress.yaml
+kubectl create -f /vagrant/confs/app1/app1.yaml
+kubectl create -f /vagrant/confs/app2/app2.yaml
+kubectl create -f /vagrant/confs/app3/app3.yaml
+kubectl create -f /vagrant/confs/ingress.yaml
 
 #sudo cat /var/lib/rancher/k3s/server/node-token > /vagrant/node-token
 #sudo ufw disable
