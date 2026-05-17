@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-k3d cluster create my-cluster --api-port 6443 -p 8080:80@loadbalancer --agents 2
+k3d cluster create --config k3d-config.yaml
 kubectl create namespace dev
 kubectl create namespace argocd
 kubectl apply -n argocd --server-side --force-conflicts -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
