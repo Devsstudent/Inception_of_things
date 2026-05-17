@@ -1,0 +1,19 @@
+ON HOST:
+qemu-img resize /home/toliver/sgoinfre/qcow/debian-13-nocloud-amd64.qcow2 +20G
+
+qemu-system-x86_64 -enable-kvm -m 8192 -drive file=/home/toliver/sgoinfre/qcow/debian-13-nocloud-amd64.qcow2 -netdev user,id=net0 -device e1000,netdev=net0 -nographic -cpu host
+
+sudo apt update
+sudo apt install fdisk
+sudo apt install parted
+apt install cloud-guest-utils
+
+growpart /dev/sda 1
+resize2fs /dev/sda1
+update-grub
+update-initramfs -u -k all
+shutdown now
+
+reboot ->
+
+apt install git vagrant-libvirt libvirt-daemon-system qemu-system vagrant-env
