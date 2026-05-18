@@ -19,6 +19,9 @@ spec:
       - name: gitlab-ci
         image: gitlab/gitlab-ce:latest
         imagePullPolicy: Always
+        env:
+        - name: GITLAB_ROOT_PASSWORD
+        value: "root"
         ports:
         - containerPort: 80
 
