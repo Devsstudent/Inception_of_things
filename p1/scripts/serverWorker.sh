@@ -7,5 +7,5 @@ sudo apt-get update -y
 sudo apt-get install vim curl -y
 source .env
 cp /etc/environment /etc/systemd/system/k3s.service.env
-curl -sfL https://get.k3s.io | sh -s - agent --server https://192.168.56.110:6443 --token inception 
+curl -sfL https://get.k3s.io | sh -s - agent --server https://192.168.56.110:6443 --token inception  --node-ip 192.168.56.111
 #sudo ufw disable
