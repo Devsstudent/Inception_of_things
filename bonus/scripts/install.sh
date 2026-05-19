@@ -19,7 +19,7 @@ helm upgrade --install gitlab gitlab/gitlab \
 
 kubectl get secret gitlab-gitlab-initial-root-password -n gitlab -ojsonpath='{.data.password}' | base64 --decode ; echo
 
-kubectl -n gitlab port-forward svc/gitlab-webservice-default 8080:8181
+kubectl -n gitlab port-forward svc/gitlab-webservice-default 8082:8181 --address 0.0.0.0
 
 # We have to create a gitlab user, and create a project and push the same as the toliver-iot like in p3.
 
@@ -35,23 +35,21 @@ kubectl edit configmap coredns -n kube-system
 
 kubectl rollout restart deployment coredns -n kube-system
 
-
 kubectl create namespace argocd
 
-helm upgrade --install argocd argocd/argocd \
-  --namespace argocd
+helm install argocd argo/argo-cd --version 9.5.14 --namespace argocd
 
 kubectl config set-context --current --namespace=argocd
 
 kubectl get secret argocd-initial-admin-secret  -ojsonpath='{.data.password}' | base64 --decode ; echo
 
-kubectl -n argocd port-forward svc/argocd-server  8001:80
+kubectl -n argocd port-forward svc/argocd-server  8081:80 --address 0.0.0.0
 
-argocd login  localhost:8001
+argocd login  localhost:8081
 
-argocd repo add http://gitlab.iot.com/orson/test.git \
-  --username <your-user> \
-  --password <your-token> \
+argocd repo add https://gitlab.iot.com/iot/test.git \
+  --username iot \
+  --password rootroot \
   --insecure-skip-server-verification
 
 # Then on argocd it's working
