@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Secret
-metadata:
-  name: iot-gitlab-initial-root-password
-  namespace: gitlab
-type: Opaque
-stringData:
-  password: "RootPass123!"
